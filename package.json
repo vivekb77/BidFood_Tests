@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test --headed", 
+    "debug": "npx playwright test --debug",
+    "report": "npx playwright show-report"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Vivek Bheke",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.31.2"
