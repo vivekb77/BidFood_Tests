@@ -1,4 +1,5 @@
-const { expect } = require("@playwright/test");
+const { test,expect } = require("@playwright/test");
+
 
 exports.SearchPage = class SearchPage {
   constructor(page) {
@@ -29,24 +30,31 @@ exports.SearchPage = class SearchPage {
 
   async assertProductDetails(productName) {
 
-    await expect.soft(this.productDetailsLocator).toHaveText(productName);
+//wait for the element to be visible
+    await (this.productDetailsLocator).waitFor();
+    // console.log("Locator count is : "+await this.productDetailsLocator.count());
 
-    //if item is found on first page asset the details/name
+    //if item is found on first page assert the details/name
     if(await this.productDetailsLocator.count() > 0){
-        // console.log("Product is available on page 1");
+        console.log("Product is available on page 1");
         await expect(this.productDetailsLocator).toHaveText(productName);
     }
 
     //If you can’t find it in first page you can try search with “CHEESE BLUE DANISH (APP 3KG)”
 
-    if(await this.productDetailsLocator.count() == 0){
-        // console.log("Product is not available on page 1");
+    else if(await this.productDetailsLocator.count() == 0){
+        console.log("Product is not available on page 1, searching by full name");
         await this.searchBoxLocator.click();
         await this.searchBoxLocator.fill(productName);
         await this.searchBtnLocator.click();
         await expect(this.productDetailsLocator).toHaveText(productName);
-
     }
+    else{
+      //fail the test if none of if conditions are met
+      console.log("Product is not available even on search by full name");
+      test.fail();
+    }
+    
   }
 
 
@@ -71,7 +79,6 @@ exports.SearchPage = class SearchPage {
 
   async addProductToBasket() {
     await this.addToBasketBtnLocator.click();
-
   }
 
   async assertBasketItems(productName,productCode,price) {

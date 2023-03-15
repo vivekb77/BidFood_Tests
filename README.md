@@ -11,7 +11,7 @@
 * Go to Project root directory and install Dependency: `npm install`
 * All the dependencies from package.json would be installed in node_modules folder.
 
-### How to Run Test
+### How to Run Tests
 * Go to Project root directory and run command: `npm test`
 
 ### How to view HTML report
@@ -19,3 +19,7 @@
 
 ### How to view failed test screenshot
 * Go to Project root directory: `./test-results/`
+
+<!-- 
+### How to Run Tests on Saucelabs
+* Go to Project root directory and run command: `saucectl run` -->

@@ -24,6 +24,7 @@ test.describe("Search Products Tests", () => {
     //search for "cheese" and assert the product name
     await searchPage.searchProduct(Products.searchitem1);
     await searchPage.assertProductDetails(Products.searchitem2);
+
   });
 
 
@@ -42,6 +43,8 @@ test.describe("Search Products Tests", () => {
     await searchPage.addProductToBasket();
     //assert basket item for name, code and price with expected values
     await searchPage.assertBasketItems(Products.searchitem2, Products.searchitem3, Products.price);
+    
+    
 
   });
 

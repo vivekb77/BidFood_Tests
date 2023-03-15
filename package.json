@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test --headed", 
+    "test": "playwright test --headed --workers=2 --retries=1", 
     "debug": "npx playwright test --debug",
     "report": "npx playwright show-report"
   },
@@ -12,6 +12,6 @@
   "author": "Vivek Bheke",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.31.2"
+    "@playwright/test": "^1.31.1"
   }
 }
