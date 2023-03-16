@@ -1,6 +1,5 @@
 const { expect } = require("@playwright/test");
-const  Creds  = require("../../data/login.json");
-const  BaseURL = require("../../data/base.json");
+
 
 exports.LoginPage = class LoginPage {
   constructor(page) {
@@ -11,21 +10,21 @@ exports.LoginPage = class LoginPage {
 
   } 
  
-  async login() {
+  async login(url,id,password) {
 
-    await this.page.goto(BaseURL.baseurl);
+    await this.page.goto(url);
 
     await this.idLocator.click();
-    await this.idLocator.fill(Creds.credentials.id);
+    await this.idLocator.fill(id);
     await this.passwordLocator.click();
-    await this.passwordLocator.fill(Creds.credentials.password);
+    await this.passwordLocator.fill(password);
     await this.loginBtnLocator.click();
 
   }
 
   //check if login is successful and user is redirencted to home page
-  async pageTitle() {
-    await expect(this.page).toHaveTitle("myBidfood");
+  async verifyPageTitle(pageTitle) {
+    await expect(this.page).toHaveTitle(pageTitle);
   }
 
 };

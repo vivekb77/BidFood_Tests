@@ -1,6 +1,7 @@
 {
     "credentials" :{
             "id" : "BID202582",
-            "password" : "VivekTest3"
+            "password" : "VivekTest3",
+            "pageTitle" : "myBidfood"
              }   
 }

@@ -30,7 +30,7 @@ exports.SearchPage = class SearchPage {
 
   async assertProductDetails(productName) {
 
-//wait for the element to be visible
+    //wait for the element to be visible
     await (this.productDetailsLocator).waitFor();
     // console.log("Locator count is : "+await this.productDetailsLocator.count());
 
@@ -53,12 +53,10 @@ exports.SearchPage = class SearchPage {
       //fail the test if none of if conditions are met
       console.log("Product is not available even on search by full name");
       test.fail();
+
     }
     
   }
-
-
-
 
   async clearBasket() {
     await this.basketBtnLocator.click();
@@ -81,11 +79,11 @@ exports.SearchPage = class SearchPage {
     await this.addToBasketBtnLocator.click();
   }
 
-  async assertBasketItems(productName,productCode,price) {
+  async assertBasketItems(productName,productCode,price,quantity) {
     await this.basketBtnLocator.click();
     await expect(this.basketItemLocatorName).toHaveText(productName);
     await expect(this.basketItemLocatorCode).toHaveText(productCode);
-    await expect(this.basketItemLocatorQuantity).toHaveValue("1"); 
+    await expect(this.basketItemLocatorQuantity).toHaveValue(quantity); 
     await expect(this.basketItemLocatorPrice).toHaveText(price); 
   }
 
