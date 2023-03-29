@@ -49,6 +49,10 @@ exports.SearchPage = class SearchPage {
         await this.searchBtnLocator.click();
         await expect(this.productDetailsLocator).toHaveText(productName);
     }
+
+
+
+    
     else{
       //fail the test if none of if conditions are met
       console.log("Product is not available even on search by full name");

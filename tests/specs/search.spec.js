@@ -25,6 +25,9 @@ test.describe("Search Products Tests", () => {
     await searchPage.searchProduct(Products.searchitem1);
     await searchPage.assertProductDetails(Products.searchitem2);
 
+    // await searchPage.searchProduct(Products.searchitem1);
+    // await searchPage.assertProductDetails(Products.searchitem2);
+
   });
 
 
